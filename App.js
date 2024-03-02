@@ -23,17 +23,19 @@ export default function App() {
   }
 
   const tempCovert=()=>{
-    if(isNaN(value)) return "";
     if(!toCelsius){
-      return ((value-32)/1.8).toFixed(1);
+      return ((value-32)/1.8);
     }
-    return ((value*1.8)+32).toFixed(1);
+    return ((value*1.8)+32) ;
+  }
+
+  const getTemp=()=>{
+    if(isNaN(value)) return "";
+    return tempCovert().toFixed(1);
   }
 
   const imageSource=()=>{
-    //console.log("image source");
     if(!toCelsius){
-      //console.log("image source to far - "+value);
       if(value<0) return coldimage;
       return hotimage;
     }
@@ -51,7 +53,7 @@ export default function App() {
             <Text style={{
               fontSize:50,
               color:"white"
-            }}>{tempCovert()+symbol(toCelsius)}</Text>
+            }}>{getTemp()+symbol(toCelsius)}</Text>
             <Input value={value} onChange={setValue} toCelsius={toCelsius} symbol={symbol}/>
             <TouchableOpacity onPress={()=>{swapDegree()}}
               style={s.button}>
