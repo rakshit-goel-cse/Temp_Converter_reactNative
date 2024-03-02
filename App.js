@@ -15,15 +15,15 @@ export default function App() {
     setToCelsius(!toCelsius);
   }
 
-  const symbol = (toCelsius) =>{
-    if(!toCelsius){
+  const symbol = (flag) =>{
+    if(!flag){
       return"°F";
     }
     return"°C";
   }
 
   const tempCovert=()=>{
-    if(!toCelsius){
+    if(toCelsius){
       return ((value-32)/1.8);
     }
     return ((value*1.8)+32) ;
